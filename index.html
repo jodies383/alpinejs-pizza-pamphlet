@@ -18,33 +18,60 @@
             </nav>
         </div>
         <div class="container">
-            <div class="specials">
-                <div class="medium">
-                    <img src="https://image.shutterstock.com/image-vector/italian-pizza-tomato-sausage-olive-600w-554691619.jpg"
-                        alt="">
-                    <h2>Medium Pizza</h2>
-                    <h3>R78.99</h3>
-                    <i>
-                        medium margeritha pizza with 3 toppings max.
-                        2 or less meat topping.
-                        3 or less other toppings.
-                    </i>
+            <div class="cart">
+                <h3>Shopping Cart</h3>
+                <table>
+                    <tr>
+                        <div x-data="{ smallCount: 0 }">
+                            <strong>Small</strong>
+                            <button class="btn btn-dark" x-on:click="smallCount+=48.99">+</button>
+                            R<span x-text="smallCount.toFixed(2)"></span>
+                            <template x-if="smallCount > 0">
+                                <button class="btn btn-dark" x-on:click="smallCount-=48.99">-</button>
+                            </template>
 
-                </div>
-                <div class="large">
-                    <img src="https://image.shutterstock.com/image-vector/italian-pizza-tomato-sausage-olive-600w-554691619.jpg"
-                        alt="">
-                    <h2>Large Pizza</h2>
-                    <h3>R114.99</h3>
-                    <i>
-                        large margeritha pizza with 3 toppings max.
-                        3 meat toppings max.
-                        3 or less other toppings.
-                    </i>
-                </div>
+                        </div>
+                    </tr>
+                    <tr>
+                        <div x-data="{ count: 0 }">
+                            <strong>Medium</strong>
+                            <button class="btn btn-dark" x-on:click="count+=78.99">+</button>
+                            R<span x-text="count.toFixed(2)"></span>
+                            <template x-if="count > 0">
+                                <button class="btn btn-dark" x-on:click="count-=78.99">-</button>
+                            </template>
+                            </td>
+                            </td>
+                        </div>
+                    </tr>
+                    <tr>
+                        <td>
+
+                            <div x-data="{ count: 0 }">
+                                <strong>Large</strong>
+                                <button class="btn btn-dark" x-on:click="count+=114.99">+</button>
+                                R<span x-text="count.toFixed(2)"></span>
+                                <template x-if="count > 0">
+                                    <button class="btn btn-dark" x-on:click="count-=114.99">-</button>
+                                </template>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                            <div x-data="{ count: 0 }">
+                                <strong>Total price</strong>
+                                R<span x-text="count.toFixed(2)"></span>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="specials">
                 <div class="small">
-                    <img src="https://image.shutterstock.com/image-vector/italian-pizza-tomato-sausage-olive-600w-554691619.jpg"
-                        alt="">
+                    <img src="pizza.png" alt="">
                     <h2>Small Pizza</h2>
                     <h3>R48.99</h3>
                     <i>
@@ -54,9 +81,33 @@
                             <li>3 or less other toppings.</li>
                         </ul>
                     </i>
+                    <a class="btn btn-dark" @click="smallCount++">Order</a>
                 </div>
+                <div class="medium">
+                    <img src="pizza.png" alt="">
+                    <h2>Medium Pizza</h2>
+                    <h3>R78.99</h3>
+                    <i>
+                        medium margeritha pizza with 3 toppings max.
+                        2 or less meat topping.
+                        3 or less other toppings.
+                    </i>
+                    <a class="btn btn-dark" @click="count++">Order</a>
+                </div>
+                <div class="large">
+                    <img src="pizza.png" alt="">
+                    <h2>Large Pizza</h2>
+                    <h3>R114.99</h3>
+                    <i>
+                        large margeritha pizza with 3 toppings max.
+                        3 meat toppings max.
+                        3 or less other toppings.
+                    </i>
+                    <a class="btn btn-dark" @click="count++">Order</a>
+                </div>
+
             </div>
-            
+
         </div>
     </div>
     <div class="footer fixed-bottom">
@@ -76,6 +127,7 @@
             7890
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
 </body>
 
 </html>

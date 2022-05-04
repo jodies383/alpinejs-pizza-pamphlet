@@ -8,57 +8,74 @@ body {
   
   .small {
     background-color: #A3C4BC;
+    padding: 1em;
+	margin: auto;
+	width: 80%;
+	border-radius: 1em;
     
     
   }
   
   .medium {
     background-color: #BFD7B5;
+    padding: 1em;
+	margin: auto;
+	width: 80%;
+	border-radius: 1em;
   }
   
   .large {
     background-color: #E7EFC5;
+    padding: 1em;
+	margin: auto;
+	width: 80%;
+	border-radius: 1em;
     flex : 2;
   }
   
   .specials div {
     flex: 1;
-    /* border: 1px solid lightgrey; */
-    margin: 0em;
+    margin: 1em;
     padding: 1em;
     
   }
   
   .small img {
     width: 4em;
+    border-radius: 5em;
+
   }
   
   .medium img {
     width: 5em;
+    border-radius: 5em;
+
   }
   
   
   .large img {
     width: 7em;
+    border-radius: 5em;
+
     
   }
   
   
   nav{
-    background-color: #605770; 
+    background-color: #26232a; 
     color: white;
   }
   
   .footer {
     display: flex;
+    color: white;
   }
   
   .footer div {
     flex: 1;
-  /*   border: 1px solid;
-     */  margin-top: 1em;
-    padding: 1em;
-    background-color: #605770;
+    /* margin-top: 1em; */
+    padding: 0.15em;
+    background-color: #26232a;
   }
   
   
