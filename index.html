@@ -11,103 +11,117 @@
 </head>
 
 <body>
-    <div>
+    <div x-data="{ sizes: true }">
         <div>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-fixed-top">
+                <h1 class="heading">Perfect Pizza</h1>
+            </nav>
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <h1 class="heading">Perfect Pizza</h1>
                     </div>
                     <div class="col">
                         <div class="cart" x-data="{ show: false }">
-                            <h3 @click="show=!show">Shopping Cart</h3>
+                            <h3 @click="show=!show"> <img src="shopping-cart.png"></h3>
                             <div x-show="show">
-                                <table>
-                                    <tr>
-                                        <div>
+                                <tablex>
+                                    <div>
+                                        <!--  -->
+                                        <div x-show="sizes">
+                                            <tr>
+                                                <div>
+                                                    <div x-data="{ smallCount: 0 }"
+                                                        @add-small-pizza.window="smallCount+=48.99">
+                                                        <div x-data="{ totalCount: 0 }">
+                                                            <div x-show="smallCount > 0">
+                                                                <strong>Small</strong>
+                                                                <button class="btn btn-dark"
+                                                                    x-on:click="smallCount+=48.99; $dispatch('add-small-total')">+</button>
+                                                                R<span x-text="smallCount.toFixed(2)"></span>
 
-                                            <div x-data="{ smallCount: 0 }" @add-small-pizza.window="smallCount+=48.99">
-                                                <div x-data="{ totalCount: 0 }">
-                                                    <div x-show="smallCount > 0">
-                                                        <strong>Small</strong>
-                                                        <button class="btn btn-dark"
-                                                            x-on:click="smallCount+=48.99; $dispatch('add-small-total')">+</button>
-                                                        R<span x-text="smallCount.toFixed(2)"></span>
+                                                                <template x-if="smallCount > 1">
+                                                                    <button class="btn btn-dark"
+                                                                        x-on:click="smallCount-=48.99; if(smallCount < 1) { smallCount = 0 } $dispatch('remove-small-total')">-</button>
+                                                                </template>
+                                                            </div>
+                                                        </div>
 
-                                                        <template x-if="smallCount > 1">
+                                                    </div>
+                                                </div>
+                                            </tr>
+                                            <tr>
+                                                <div x-data="{ mediumCount: 0 }"
+                                                    @add-medium-pizza.window="mediumCount+=78.99">
+                                                    <div x-data="{ totalCount: 0 }">
+                                                        <div x-show="mediumCount > 0">
+                                                            <strong>Medium</strong>
                                                             <button class="btn btn-dark"
-                                                                x-on:click="smallCount-=48.99; if(smallCount < 1) { smallCount = 0 } $dispatch('remove-small-total')">-</button>
-                                                        </template>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </tr>
-                                    <tr>
-                                        <div x-data="{ mediumCount: 0 }" @add-medium-pizza.window="mediumCount+=78.99">
-                                            <div x-data="{ totalCount: 0 }">
-                                                <div x-show="mediumCount > 0">
-                                                    <strong>Medium</strong>
-                                                    <button class="btn btn-dark"
-                                                        x-on:click="mediumCount+=78.99; $dispatch('add-medium-total')">+</button>
-                                                    R<span x-text="mediumCount.toFixed(2)"></span>
-                                                    <template x-if="mediumCount > 0">
-                                                        <button class="btn btn-dark" x-on:click="mediumCount-=78.99; if(mediumCount < 1) { mediumCount = 0 }
+                                                                x-on:click="mediumCount+=78.99; $dispatch('add-medium-total')">+</button>
+                                                            R<span x-text="mediumCount.toFixed(2)"></span>
+                                                            <template x-if="mediumCount > 0">
+                                                                <button class="btn btn-dark" x-on:click="mediumCount-=78.99; if(mediumCount < 1) { mediumCount = 0 }
                                                      $dispatch('remove-medium-total')">-</button>
-                                                    </template>
-                                                    </td>
-                                                    </td>
+                                                            </template>
+                                                            </td>
+                                                            </td>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </tr>
-                                    <tr>
-                                        <td>
+                                            </tr>
+                                            <tr>
+                                                <td>
 
-                                            <div x-data="{ largeCount: 0 }"
-                                                @add-large-pizza.window="largeCount+=114.99">
-                                                <div x-data="{ totalCount: 0 }">
-                                                    <div x-show="largeCount > 0">
-                                                        <strong>Large</strong>
-                                                        <button class="btn btn-dark"
-                                                            x-on:click="largeCount+=114.99; $dispatch('add-large-total')">+</button>
-                                                        R<span x-text="largeCount.toFixed(2)"></span>
-                                                        <template x-if="largeCount > 0">
-                                                            <button class="btn btn-dark" x-on:click="largeCount-=114.99; if(largeCount < 1) { largeCount = 0 }
+                                                    <div x-data="{ largeCount: 0 }"
+                                                        @add-large-pizza.window="largeCount+=114.99">
+                                                        <div x-data="{ totalCount: 0 }">
+                                                            <div x-show="largeCount > 0">
+                                                                <strong>Large</strong>
+                                                                <button class="btn btn-dark"
+                                                                    x-on:click="largeCount+=114.99; $dispatch('add-large-total')">+</button>
+                                                                R<span x-text="largeCount.toFixed(2)"></span>
+                                                                <template x-if="largeCount > 0">
+                                                                    <button class="btn btn-dark" x-on:click="largeCount-=114.99; if(largeCount < 1) { largeCount = 0 }
                                                         $dispatch('remove-large-total')">-</button>
-                                                        </template>
+                                                                </template>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <!--  -->
+                                        </div>
+                                        <td>
+                                            <div x-data="{ total: true }">
+                                                <div x-data="{ totalCount: 0 }" x-show="total"
+                                                    @add-large-total.window="totalCount+=114.99"
+                                                    @add-medium-total.window="totalCount+=78.99"
+                                                    @add-small-total.window="totalCount+=48.99"
+                                                    @remove-large-total.window="totalCount-=114.99; if(totalCount < 1) { totalCount = 0 }"
+                                                    @remove-medium-total.window="totalCount-=78.99; if(totalCount < 1) { totalCount = 0 }"
+                                                    @remove-small-total.window="totalCount-=48.99; if(totalCount < 1) { totalCount = 0 }">
+                                                    <strong>Total price</strong>
+                                                    R<span x-text="totalCount.toFixed(2)"></span>
+                                                    <div x-data="{ pay: false }">
+                                                        <div x-data="{ checkout: true }">
+                                                            <button x-show="checkout" class="btn btn-dark"
+                                                                x-on:click="pay=true; checkout=false; sizes=false">Checkout</button>
+                                                        </div>
+                                                        <button x-show="pay" class="btn btn-dark"
+                                                            x-on:click="total=false; pay=false">Pay</button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div x-data="{ totalCount: 0 }" @add-large-total.window="totalCount+=114.99"
-                                                @add-medium-total.window="totalCount+=78.99"
-                                                @add-small-total.window="totalCount+=48.99"
-                                                @remove-large-total.window="totalCount-=114.99; if(totalCount < 1) { totalCount = 0 }"
-                                                @remove-medium-total.window="totalCount-=78.99; if(totalCount < 1) { totalCount = 0 }"
-                                                @remove-small-total.window="totalCount-=48.99; if(totalCount < 1) { totalCount = 0 }">
-                                                <strong>Total price</strong>
-                                                R<span x-text="totalCount.toFixed(2)"></span>
-                                                <div x-show="show" x-data="{ show: true }">
-                                                <button class="btn btn-dark" x-on:click="show=!show">Checkout</button>
-                                                </div>
-                                                <div x-show="show" x-data="{ show: false }">
-                                                    <button class="btn btn-dark" x-on:click="">Pay</button>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
+                                        </tr>
+                                    </div>
+                                    </table>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-       
+
         </div>
         <div class="container">
             <div class="specials">
@@ -123,7 +137,7 @@
                                 <li>3 or less other toppings.</li>
                             </ul>
                         </i>
-                        <a class="btn btn-dark"
+                        <a class="btn btn-dark" x-show="sizes"
                             @click="$dispatch('add-small-pizza'); $dispatch('add-small-total')">Order small</a>
                     </div>
                 </div>
@@ -137,7 +151,7 @@
                             2 or less meat topping.
                             3 or less other toppings.
                         </i>
-                        <a class="btn btn-dark"
+                        <a class="btn btn-dark" x-show="sizes"
                             @click="$dispatch('add-medium-pizza'); $dispatch('add-medium-total')">Order medium</a>
                     </div>
                 </div>
@@ -151,7 +165,7 @@
                             3 meat toppings max.
                             3 or less other toppings.
                         </i>
-                        <a class="btn btn-dark"
+                        <a class="btn btn-dark" x-show="sizes"
                             @click="$dispatch('add-large-pizza'); $dispatch('add-large-total')">Order large</a>
                     </div>
                 </div>
