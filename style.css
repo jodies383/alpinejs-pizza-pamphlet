@@ -1,5 +1,6 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
 
+body {
   font-family: arial, sans-serif;
   /* background-color: #F2DDA4 !important; */
   font-size: 0.75em;
@@ -14,15 +15,19 @@ body {
 
 
 }
-nav{
+
+nav {
   border-style: solid;
   border-top: none;
-  border-left:none;
-  border-right:none;
+  border-left: none;
+  border-right: none;
   border-bottom: 2px solid rgb(193, 212, 193);
   margin-bottom: 7px;
   box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
+  font-family: 'Sacramento', cursive;
+  
 }
+
 .medium {
   background-color: #BFD7B5;
   padding: 1em;
@@ -42,8 +47,9 @@ nav{
 
 .specials div {
   flex: 1;
-  margin: 1em;
+  margin: 3em;
   padding: 1em;
+  text-align: center;
 
 }
 
@@ -66,7 +72,8 @@ nav{
 
 
 }
-.cart{
+
+.cart {
   background-color: #f7f7f7;
   /* width: 20em; */
   border-radius: 0.50em;
@@ -74,18 +81,35 @@ nav{
   cursor: pointer;
   float: right;
   text-align: center;
+
+  position: fixed;
+  /* width: 100%; */
+  /* margin: auto; */
+  /* width: 20%; */
+  /* min-height: 15em; */
+  top: 0em;
+  right: 0em;
+  margin-right: 1em;
+  padding: 1em;
+  /* border: 0.1em solid; */
+  /* border-radius: 0.25em; */
+  /* z-index: 1000; */
+
 }
-.heading{
+
+.heading {
   color: rgb(168, 195, 168);
-  text-align: left;
+ font-size: 4.1em;
+  letter-spacing: 0.1em;
+  text-align: center;
 }
 
 .footer {
   display: flex;
   border-style: solid;
   border-top: 2px solid rgb(193, 212, 193);
-  border-left:none;
-  border-right:none;
+  border-left: none;
+  border-right: none;
   border-bottom: none;
   box-shadow: 0 1px 6px 0 rgb(32 33 36 / 28%);
 }
